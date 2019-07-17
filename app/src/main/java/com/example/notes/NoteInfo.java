@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 
-public final class NoteInfo implements Parcelable{
+
+public final class NoteInfo implements Parcelable {
     private CourseInfo mCourse;
     private String mTitle;
     private String mText;
@@ -19,7 +20,6 @@ public final class NoteInfo implements Parcelable{
         mCourse = source.readParcelable(CourseInfo.class.getClassLoader());
         mTitle = source.readString();
         mText = source.readString();
-
     }
     public CourseInfo getCourse() {
         return mCourse;
@@ -75,14 +75,14 @@ public final class NoteInfo implements Parcelable{
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags){
+    public void writeToParcel(Parcel dest, int flags) {
         dest.writeParcelable(mCourse, 0);
         dest.writeString(mTitle);
         dest.writeString(mText);
     }
 
-    public final static Parcelable.Creator<NoteInfo> CREATOR =
-            new Parcelable.Creator<NoteInfo>(){
+    public final static Creator<NoteInfo> CREATOR =
+            new Creator<NoteInfo>() {
 
                 @Override
                 public NoteInfo createFromParcel(Parcel source) {
@@ -93,7 +93,5 @@ public final class NoteInfo implements Parcelable{
                 public NoteInfo[] newArray(int size) {
                     return new NoteInfo[size];
                 }
-    };
-
-
+            };
 }
