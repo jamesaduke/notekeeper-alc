@@ -166,9 +166,14 @@ public class NoteActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+    // When user clicks next item on the options menu
     private void moveNext() {
+        saveNote();
 
+        ++mNotePosition;
+        mNote = DataManager.getInstance().getNotes().get(mNotePosition);
+        saveOriginalNoteValues();
+        displayNote(mSpinnerCourses, mTextNoteTitle, mTextNoteText);
     }
 
     private void sendEmail() {
