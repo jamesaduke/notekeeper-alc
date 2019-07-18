@@ -2,4 +2,7 @@
     <string name="app_name">Notes</string>
     <string name="action_settings">Send As Email</string>
     <string name="title_activity_note">Edit Note</string>
+    <string name="next_menu">Next</string>
+    <string name="menu_email">Send as email</string>
+    <string name="menu_cancel">Cancel</string>
 </resources>

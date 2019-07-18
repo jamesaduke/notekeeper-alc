@@ -4,11 +4,15 @@
     tools:context="com.example.notes.NoteActivity">
     <item
         android:id="@+id/action_cancel"
-        android:orderInCategory="100"
-        android:title="Cancel" />
+        android:orderInCategory="101"
+        android:title="@string/menu_cancel" />
+    <item
+        android:id="@+id/action_next"
+        android:orderInCategory="102"
+        android:title="@string/next_menu" />
     <item
         android:id="@+id/action_send_mail"
-        android:orderInCategory="101"
+        android:orderInCategory="103"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 </menu>
