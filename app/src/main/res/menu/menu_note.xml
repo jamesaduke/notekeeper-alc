@@ -4,15 +4,19 @@
     tools:context="com.example.notes.NoteActivity">
     <item
         android:id="@+id/action_cancel"
+        android:icon="@android:drawable/ic_menu_revert"
         android:orderInCategory="101"
-        android:title="@string/menu_cancel" />
+        android:title="@string/menu_cancel"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_next"
+        android:icon="@android:drawable/ic_media_next"
         android:orderInCategory="102"
-        android:title="@string/next_menu" />
+        android:title="@string/next_menu"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_send_mail"
+        android:icon="@android:drawable/ic_menu_revert"
         android:orderInCategory="103"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:title="@string/action_email" />
 </menu>
