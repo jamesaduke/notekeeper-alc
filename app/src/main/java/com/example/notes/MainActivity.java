@@ -22,6 +22,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private NoteRecyclerAdapter mNoteRecyclerAdapter;
+    private RecyclerView mRecyclereItems;
+    private LinearLayoutManager mNotesLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +58,24 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initializeDisplayContent() {
-        final RecyclerView recyclerNotes = findViewById(R.id.list_items);
-        final LinearLayoutManager notesLayoutManager = new LinearLayoutManager(this);
-        recyclerNotes.setLayoutManager(notesLayoutManager);
+        mRecyclereItems = findViewById(R.id.list_items);
+        mNotesLayoutManager = new LinearLayoutManager(this);
+
 
         List<NoteInfo> notes = DataManager.getInstance().getNotes();
         mNoteRecyclerAdapter = new NoteRecyclerAdapter(this, notes);
-        recyclerNotes.setAdapter(mNoteRecyclerAdapter);
+        displayNotes();
 
 
+    }
+
+    private void displayNotes() {
+        mRecyclereItems.setAdapter(mNoteRecyclerAdapter);
+        mRecyclereItems.setLayoutManager(mNotesLayoutManager);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        Menu menu = navigationView.getMenu();
+        menu.findItem(R.id.nav_notes).setChecked(true);
     }
 
     @Override
@@ -105,22 +116,24 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_tools) {
-
-        } else if (id == R.id.nav_share) {
-
+        if (id == R.id.nav_notes) {
+            // Handle the selection
+            displayNotes();
+        } else if (id == R.id.nav_courses) {
+            handleSelection("Courses");
+        }  else if (id == R.id.nav_share) {
+            handleSelection("you have shared enough");
         } else if (id == R.id.nav_send) {
-
+            handleSelection("Send");
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void handleSelection(String message) {
+        View view = findViewById(R.id.list_items);
+        Snackbar.make(view, message, Snackbar.LENGTH_LONG).show();
     }
 }
